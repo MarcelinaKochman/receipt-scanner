@@ -25,6 +25,15 @@ repositories {
 
 
 dependencies {
-	implementation('org.springframework.boot:spring-boot-starter')
+	compile('org.springframework.boot:spring-boot-starter')
+
+	// OCR
+    // TODO try tu bump up to newest version
+	compile group: 'net.sourceforge.tess4j', name: 'tess4j', version: '3.2.1'
+    compile group: 'net.coobird', name: 'thumbnailator', version: '0.4.8'
+
+    // REST
+    compile("org.springframework.boot:spring-boot-starter-web")
+
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 }
