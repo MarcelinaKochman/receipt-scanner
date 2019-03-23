@@ -1,5 +1,6 @@
 package com.wfiis.receiptscanner.ocr;
 
+import com.wfiis.receiptscanner.ocr.model.Metadata;
 import com.wfiis.receiptscanner.ocr.preprocessing.ImagePreprocessingStrategy;
 import net.sourceforge.tess4j.ITesseract;
 import net.sourceforge.tess4j.TesseractException;
@@ -27,8 +28,8 @@ public class TextRecognizer {
         this.strategy = strategy;
     }
 
-    public String recognize(MultipartFile imageFile) {
-        String result = null;
+    public String recognize(MultipartFile imageFile, Metadata metadata) {
+        LOGGER.info("OCR of image: {}", imageFile.getName());
 
         BufferedImage image = strategy.applyPreprocessing(convert(imageFile));
 
@@ -36,6 +37,8 @@ public class TextRecognizer {
             LOGGER.warn("Error while loading image file!");
             return null;
         }
+
+        String result = null;
 
         try {
             result = instance.doOCR(image);
@@ -45,9 +48,5 @@ public class TextRecognizer {
 
         return result;
     }
-
-
-
-
 
 }
