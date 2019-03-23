@@ -21,7 +21,7 @@ public class Metadata {
         this.fileName = fileName;
     }
 
-    public boolean isShoulBeSavedAsFiles() {
+    public boolean isShouldBeSavedAsFiles() {
         return shoulBeSavedAsFiles;
     }
 
