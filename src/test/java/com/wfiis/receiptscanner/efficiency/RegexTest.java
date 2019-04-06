@@ -2,7 +2,7 @@ package com.wfiis.receiptscanner.efficiency;
 
 import com.wfiis.receiptscanner.efficiency.util.ResultProvider;
 import com.wfiis.receiptscanner.ocr.model.Metadata;
-import com.wfiis.receiptscanner.regex.Matcher;
+import com.wfiis.receiptscanner.ectractors.Matcher;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,7 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.wfiis.receiptscanner.regex.Regexs.PARAGON_FISKALNY;
+import static com.wfiis.receiptscanner.ectractors.Regexs.PARAGON_FISKALNY;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest

@@ -17,7 +17,7 @@ apply plugin: 'io.spring.dependency-management'
 
 group = 'com.wfiis'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 1.8
+sourceCompatibility = 1.9
 
 repositories {
 	mavenCentral()
@@ -32,7 +32,10 @@ dependencies {
     compile group: 'net.sourceforge.tess4j', name: 'tess4j', version: '4.3.0'
     compile group: 'net.coobird', name: 'thumbnailator', version: '0.4.8'
 
-    // REST
+	// IMAGE PROCESSING
+	compile group: 'org.openpnp', name: 'opencv', version: '3.4.2-1'
+
+	// REST
     compile("org.springframework.boot:spring-boot-starter-web")
 
 	// TEST

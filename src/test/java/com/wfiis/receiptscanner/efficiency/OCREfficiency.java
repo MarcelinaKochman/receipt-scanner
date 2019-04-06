@@ -2,7 +2,7 @@ package com.wfiis.receiptscanner.efficiency;
 
 import com.wfiis.receiptscanner.efficiency.util.ResultProvider;
 import com.wfiis.receiptscanner.ocr.model.Metadata;
-import com.wfiis.receiptscanner.regex.ProductsMatcher;
+import com.wfiis.receiptscanner.ectractors.ProductsExtractor;
 import org.bitbucket.cowwoc.diffmatchpatch.DiffMatchPatch;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,7 +30,7 @@ public class OCREfficiency {
     private ResultProvider resultProvider;
 
     @Autowired
-    private ProductsMatcher productsMatcher;
+    private ProductsExtractor productsExtractor;
 
     @Test
     public void testEfficiencyForFewShotsOfTheSameReceipt() {
@@ -46,7 +46,7 @@ public class OCREfficiency {
 
         String recognizedText = results.get(1);
 
-        String products = productsMatcher.extractProducts(recognizedText);
+        String products = productsExtractor.extractProducts(recognizedText);
     }
 
     private Integer calculateDiff(String result, String pattern) {
