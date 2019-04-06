@@ -1,17 +1,11 @@
 package com.wfiis.receiptscanner.api.model;
 
+import java.util.List;
+
 public class OCRResponse {
 
-    private String recognizedText;
+    private List<Product> products;
     private long timeOfExecution;
-
-    public String getRecognizedText() {
-        return recognizedText;
-    }
-
-    public void setRecognizedText(String recognizedText) {
-        this.recognizedText = recognizedText;
-    }
 
     public long getTimeOfExecution() {
         return timeOfExecution;

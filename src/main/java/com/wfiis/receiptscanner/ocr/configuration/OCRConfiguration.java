@@ -11,10 +11,11 @@ public class OCRConfiguration {
 
     @Bean
     public ITesseract myService() {
-        ITesseract tesseractInstance = new Tesseract();
+        Tesseract tesseractInstance = new Tesseract();
 
         String tessDataFolder = getTesseractDataPath();
         tesseractInstance.setDatapath(tessDataFolder);
+        tesseractInstance.setLanguage("pol");
 
         return tesseractInstance;
     }

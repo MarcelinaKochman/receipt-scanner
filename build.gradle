@@ -17,7 +17,7 @@ apply plugin: 'io.spring.dependency-management'
 
 group = 'com.wfiis'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 1.8
+sourceCompatibility = 1.9
 
 repositories {
 	mavenCentral()
@@ -29,11 +29,17 @@ dependencies {
 
 	// OCR
     // TODO try tu bump up to newest version
-	compile group: 'net.sourceforge.tess4j', name: 'tess4j', version: '3.2.1'
+    compile group: 'net.sourceforge.tess4j', name: 'tess4j', version: '4.3.0'
     compile group: 'net.coobird', name: 'thumbnailator', version: '0.4.8'
 
-    // REST
+	// IMAGE PROCESSING
+	compile group: 'org.openpnp', name: 'opencv', version: '3.4.2-1'
+
+	// REST
     compile("org.springframework.boot:spring-boot-starter-web")
 
-	testImplementation('org.springframework.boot:spring-boot-starter-test')
+	// TEST
+    testCompile group: 'org.bitbucket.cowwoc', name: 'diff-match-patch', version: '1.1'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile('org.springframework.boot:spring-boot-starter-test')
 }

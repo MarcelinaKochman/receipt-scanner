@@ -28,7 +28,7 @@ public class OCRController {
 
         long startTime = System.currentTimeMillis();
 
-        response.setRecognizedText(textRecognizer.recognize(multipartFile));
+//        response.setRecognizedText(textRecognizer.recognize(multipartFile));
 
         long stopTime = System.currentTimeMillis();
         long elapsedTime = stopTime - startTime;
