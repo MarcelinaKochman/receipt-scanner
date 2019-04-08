@@ -18,7 +18,7 @@ import static com.wfiis.receiptscanner.util.TextSaver.saveToFile;
 @SpringBootTest
 public class Pipeline {
 
-    private String directoryName = "pipeline";
+    private String pipeline = "pipeline";
     private String SUM_PREFIX = "SUM_PLN";
 
     @Autowired
@@ -29,18 +29,18 @@ public class Pipeline {
 
     @Test
     public void testExtractSumFromReceipt() {
-        Map<String, String> results = resultProvider.getMapResults(getMetadata());
+        Map<String, String> results = resultProvider.getMapResults(getMetadata(pipeline, true));
 
         Map<String, String> prices = results.entrySet().stream()
                 .collect(Collectors.toMap(Map.Entry::getKey, x -> sumExtractor.extractSum(x.getValue())));
 
-        prices.forEach((key, value) -> saveToFile(value, key, directoryName, SUM_PREFIX));
+        prices.forEach((key, value) -> saveToFile(value, key, pipeline, SUM_PREFIX));
     }
 
-    private Metadata getMetadata() {
+    private Metadata getMetadata(String directoryName, boolean saveToFile) {
         Metadata metadata = new Metadata();
         metadata.setDirectoryName(directoryName);
-        metadata.setShoulBeSavedAsFiles(true);
+        metadata.setShoulBeSavedAsFiles(saveToFile);
         return metadata;
     }
 

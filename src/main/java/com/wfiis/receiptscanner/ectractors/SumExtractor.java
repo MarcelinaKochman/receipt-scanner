@@ -41,7 +41,7 @@ public class SumExtractor {
 
         String sum = getSumFromLine(sumLine);
         LOGGER.info("SUMA PLN: \n{}", sum);
-        return sum;
+        return sum.replaceAll(",", ".");
     }
 
     private String getLineWithSumPln(String string) {
