@@ -21,14 +21,14 @@ public class ResultProvider {
     private static final String DIGITS_ONLY = "^(\\(?\\+?[0-9]*\\)?)?[0-9_\\- \\(\\)]*.jpg$";
 
     @Autowired
-    private FileLoader fileLoader;
+    private MultipartFileLoader multipartFileLoader;
 
     @Autowired
     private TextRecognizer textRecognizer;
 
     public List<String> getResults(Metadata metadata) {
 
-        List<MultipartFile> shotsOfReceipt = fileLoader
+        List<MultipartFile> shotsOfReceipt = multipartFileLoader
                 .loadAllFilesFromDirectory(metadata.getDirectoryName())
                 .stream()
                 .filter(file -> file.getName().matches(DIGITS_ONLY))
@@ -41,7 +41,7 @@ public class ResultProvider {
 
     public Map<String, String> getMapResults(Metadata metadata) {
 
-        List<MultipartFile> shotsOfReceipt = fileLoader
+        List<MultipartFile> shotsOfReceipt = multipartFileLoader
                 .loadAllFilesFromDirectory(metadata.getDirectoryName())
                 .stream()
                 .filter(file -> file.getName().matches(DIGITS_ONLY))
@@ -50,7 +50,7 @@ public class ResultProvider {
         return shotsOfReceipt.stream()
                 .collect(Collectors.toMap(file -> removeExtension(file.getName()), shot -> getRecognize(metadata, shot)));
     }
-
+    
     private String getRecognize(Metadata metadata, MultipartFile shot) {
         String fileName = removeExtension(shot.getName());
         metadata.setFileName(fileName);

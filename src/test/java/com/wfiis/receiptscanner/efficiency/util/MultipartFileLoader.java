@@ -15,10 +15,11 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Component
-public class FileLoader {
+public class MultipartFileLoader {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(MultipartFileLoader.class);
     private static final String MULTIPART_FORM_DATA = "multipart/form-data";
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(FileLoader.class);
 
     public List<MultipartFile> loadAllFilesFromDirectory(String directory) {
         List<MultipartFile> filesInDirectory;

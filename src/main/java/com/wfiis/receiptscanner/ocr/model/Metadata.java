@@ -3,6 +3,7 @@ package com.wfiis.receiptscanner.ocr.model;
 public class Metadata {
     private String directoryName;
     private String fileName;
+    private String extension;
     private boolean shoulBeSavedAsFiles;
 
     public String getDirectoryName() {
@@ -27,5 +28,13 @@ public class Metadata {
 
     public void setShoulBeSavedAsFiles(boolean shoulBeSavedAsFiles) {
         this.shoulBeSavedAsFiles = shoulBeSavedAsFiles;
+    }
+
+    public String getExtension() {
+        return extension;
+    }
+
+    public void setExtension(String extension) {
+        this.extension = extension;
     }
 }
