@@ -6,15 +6,15 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 @Component
-public class Grayscale implements ImageAlgorithm {
+public class ConvertType implements ImageAlgorithm {
     @Override
     public BufferedImage process(BufferedImage image) {
+
         BufferedImage grayScaleImage = new BufferedImage(image.getWidth(), image.getHeight(),
-                BufferedImage.TYPE_BYTE_GRAY);
+                BufferedImage.TYPE_3BYTE_BGR);
 
         Graphics g = grayScaleImage.getGraphics();
         g.drawImage(image, 0, 0, null);
-        g.dispose();
 
         return grayScaleImage;
     }

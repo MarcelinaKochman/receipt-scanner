@@ -1,40 +1,36 @@
 package com.wfiis.receiptscanner.util;
 
-import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfByte;
 import org.opencv.imgcodecs.Imgcodecs;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.awt.image.DataBufferByte;
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 public class OpenCVUtil {
-    public static Mat bufferedImageToMat(BufferedImage in) {
-        Mat out;
-
-        int height = in.getHeight();
-        int width = in.getWidth();
-        out = new Mat(height, width, CvType.CV_8UC1);
-        byte[] pixels = ((DataBufferByte) in.getRaster().getDataBuffer()).getData();
-
-        out.put(0, 0, pixels);
-        return out;
-    }
-
-    public static BufferedImage matToBufferedImage(Mat in) {
-        MatOfByte mob = new MatOfByte();
-        Imgcodecs.imencode(".jpg", in, mob);
-        byte ba[] = mob.toArray();
-
-        BufferedImage bi = null;
+    public static Mat bufferedImageToMat(BufferedImage image) {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         try {
-            bi = ImageIO.read(new ByteArrayInputStream(ba));
+            ImageIO.write(image, "jpg", byteArrayOutputStream);
+            byteArrayOutputStream.flush();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return bi;
+        return Imgcodecs.imdecode(new MatOfByte(byteArrayOutputStream.toByteArray()), Imgcodecs.CV_LOAD_IMAGE_UNCHANGED);
+    }
+
+    public static BufferedImage matToBufferedImage(Mat matrix) {
+        MatOfByte mob=new MatOfByte();
+        Imgcodecs.imencode(".jpg", matrix, mob);
+        BufferedImage read = null;
+        try {
+            read = ImageIO.read(new ByteArrayInputStream(mob.toArray()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return read;
     }
 }

@@ -15,7 +15,7 @@ public class OCRConfiguration {
 
         String tessDataFolder = getTesseractDataPath();
         tesseractInstance.setDatapath(tessDataFolder);
-        tesseractInstance.setLanguage("pol");
+        tesseractInstance.setLanguage("eng");
 
         return tesseractInstance;
     }
