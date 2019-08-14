@@ -26,9 +26,7 @@ public class OccurrencesCounter {
                 String line = textLines.get(i);
                 List<Integer> indexes = getIndexesOfLettersFromSet(line, matcher);
 
-                if (isSorted(indexes)) {
-                    counter = indexes.size();
-                }
+                counter = countLongestSortedSublist(indexes);
             }
 
             result.add(counter);
@@ -37,10 +35,34 @@ public class OccurrencesCounter {
         return result;
     }
 
+    public long countLongestSortedSublist(List<Integer> indexes) {
+        int maxLength = 0;
+        int currentCounter = 1;
+
+        for (int i = 1; i < indexes.size(); ++i) {
+            if (indexes.get(i) > indexes.get(i-1)) {
+                currentCounter++;
+            } else {
+                if (currentCounter > maxLength) {
+                    maxLength = currentCounter;
+                }
+                currentCounter = 1;
+            }
+        }
+
+        if (currentCounter > maxLength) {
+            maxLength = currentCounter;
+        }
+
+        return maxLength;
+    }
+
     private List<Integer> getIndexesOfLettersFromSet(String line, List<String> matcher) {
         return matcher.stream()
                 .map(line::indexOf)
                 .filter(index -> index != -1)
                 .collect(Collectors.toList());
     }
+
+
 }

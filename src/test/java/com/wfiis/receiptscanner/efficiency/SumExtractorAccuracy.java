@@ -20,9 +20,13 @@ import static com.wfiis.receiptscanner.util.TextSaver.saveToFile;
 @SpringBootTest
 public class SumExtractorAccuracy {
 
-    private String accuracyTest = "accuracyTest";
+    private String accuracyTestWhiteBackground = "accuracyTest-whiteBackground";
+    private String pipelineSamples = "pipeline_samples";
+    private String tessPreprocessing = "tess_preprocessing";
     private String SUM_PREFIX = "SUM_PLN";
     private String DATE_PREFIX = "DATE";
+
+    private String accuracyTest = tessPreprocessing;
 
     @Autowired
     private ResultProvider resultProvider;
@@ -41,7 +45,7 @@ public class SumExtractorAccuracy {
 
     @Test
     public void calculateAccuracy() {
-        Map<String, String> results = resultProvider.getMapResults(getMetadata(accuracyTest, false, ".jpg"));
+        Map<String, String> results = resultProvider.getMapResults(getMetadata(accuracyTest, true, ".jpg"));
 
         Map<String, String> prices = getPrices(results);
         Map<String, String> dates = getDates(results);

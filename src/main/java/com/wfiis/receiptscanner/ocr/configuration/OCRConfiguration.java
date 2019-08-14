@@ -16,6 +16,11 @@ public class OCRConfiguration {
         String tessDataFolder = getTesseractDataPath();
         tesseractInstance.setDatapath(tessDataFolder);
         tesseractInstance.setLanguage("eng");
+        tesseractInstance.setTessVariable("load_system_dawg", "F");
+        tesseractInstance.setTessVariable("load_freq_dawg", "F");
+//        tesseractInstance.setPageSegMode(10);
+
+//        tesseractInstance.setTessVariable("tessedit_write_images", "T");
 
         return tesseractInstance;
     }

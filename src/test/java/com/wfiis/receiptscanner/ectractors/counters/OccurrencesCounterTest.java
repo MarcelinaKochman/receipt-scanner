@@ -17,6 +17,10 @@ public class OccurrencesCounterTest {
     private OccurrencesCounter occurrencesCounter;
     private List<String> mather = of("A", "B", "C");
     private List<String> textList = of(
+            "IGNORED",
+            "IGNORED",
+            "IGNORED",
+            "IGNORED",
             "ABC III",
             "AAAAAAA",
             "BCA    ",
@@ -26,10 +30,19 @@ public class OccurrencesCounterTest {
 
     @Test
     public void shouldCorrectCountOccurences() {
-        List<Long> expexted = of(3L, 1L, 3L, 1L, 0L);
+        List<Long> expexted = of(0L, 0L, 0L, 0L, 3L, 1L, 2L, 1L, 1L);
 
         List<Long> count = occurrencesCounter.count(textList, mather);
 
         assertEquals(expexted, count);
+    }
+
+    @Test
+    public void countLongestSortedSublist() {
+        List<Integer> list = of(4, 2, 3, 1, 7, 8, 0);
+
+        long actual = occurrencesCounter.countLongestSortedSublist(list);
+
+        assertEquals(actual, 3L);
     }
 }
