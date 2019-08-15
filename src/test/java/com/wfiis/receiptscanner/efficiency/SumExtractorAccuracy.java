@@ -21,8 +21,10 @@ import static com.wfiis.receiptscanner.util.TextSaver.saveToFile;
 public class SumExtractorAccuracy {
 
     private String accuracyTestWhiteBackground = "accuracyTest-whiteBackground";
+    private String accuracyTestMain = "accuracyTest";
     private String pipelineSamples = "pipeline_samples";
     private String tessPreprocessing = "tess_preprocessing";
+    private String mainTest = "mainTest";
     private String SUM_PREFIX = "SUM_PLN";
     private String DATE_PREFIX = "DATE";
 

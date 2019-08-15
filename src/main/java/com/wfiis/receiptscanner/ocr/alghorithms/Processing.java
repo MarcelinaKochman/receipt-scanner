@@ -23,11 +23,15 @@ public class Processing implements ImageAlgorithm {
 
         // TODO: consider to move to bufferedImageToMat util
 
+//        int h = 2500;
+//        int w = (source.width() * source.height()) / h;
+//        Imgproc.resize(source, source, new Size(source.width()/2, source.height()/2), 2, 2, Imgproc.INTER_LANCZOS4);
         Imgproc.cvtColor(source, source, Imgproc.COLOR_RGB2GRAY);
         fastNlMeansDenoising(source, source);
         source = gammaCorrection(source);
 
 //        NOT INCREASE ACCURACY
+//        GaussianBlur(source, source, new Size(3, 3), 3);
 //        threshold(source);
 //        morphologicalOpenClose(source);
 //        source = contrast(source);

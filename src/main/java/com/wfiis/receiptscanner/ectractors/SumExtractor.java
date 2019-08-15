@@ -65,7 +65,7 @@ public class SumExtractor {
     }
 
     private String prepareSumLine(String sumLine) {
-        sumLine = removeWhitespaces(sumLine);
+//        sumLine = removeWhitespaces(sumLine);
         sumLine = replaceCharacters(sumLine, CORRECT_COMMA, WRONG_CHARS_FOR_DOT_OR_COMMA);
         return sumLine;
     }

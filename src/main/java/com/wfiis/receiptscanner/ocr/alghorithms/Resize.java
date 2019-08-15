@@ -13,6 +13,8 @@ public class Resize implements ImageAlgorithm {
     @Override
     public BufferedImage process(BufferedImage image) {
 
+//        int newH = (int) (image.getHeight() * 0.5);
+//        int newW = (int) (image.getWidth() * 0.5);
         int newW = (int) (((double) image.getWidth() / (double) image.getHeight()) * (double) newH);
 
         Image tmp = image.getScaledInstance(newW, newH, image.getType());
