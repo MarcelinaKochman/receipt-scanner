@@ -28,7 +28,7 @@ public class SumExtractorAccuracy {
     private String SUM_PREFIX = "SUM_PLN";
     private String DATE_PREFIX = "DATE";
 
-    private String accuracyTest = tessPreprocessing;
+    private String accuracyTest = accuracyTestMain;
 
     @Autowired
     private ResultProvider resultProvider;

@@ -32,10 +32,10 @@ public class TextRecognizer {
         this.strategy = strategy;
     }
 
-    public String recognize(MultipartFile imageFile, Metadata metadata) { // TODO przerobic na strategie bo jest okropne
-        LOGGER.info("OCR of image: {}", imageFile.getName());
+    public String recognize(BufferedImage imageFile, Metadata metadata) { // TODO przerobic na strategie bo jest okropne
+        LOGGER.info("OCR of image: {}", metadata.getFileName());
 
-        BufferedImage image = strategy.applyPreprocessing(convert(imageFile));
+        BufferedImage image = strategy.applyPreprocessing(imageFile);
 
         if (image == null) {
             LOGGER.warn("Error while loading image file!");

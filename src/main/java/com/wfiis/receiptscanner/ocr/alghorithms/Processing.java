@@ -26,6 +26,7 @@ public class Processing implements ImageAlgorithm {
 //        int h = 2500;
 //        int w = (source.width() * source.height()) / h;
 //        Imgproc.resize(source, source, new Size(source.width()/2, source.height()/2), 2, 2, Imgproc.INTER_LANCZOS4);
+        Core.rotate(source, source, Core.ROTATE_90_CLOCKWISE); //ROTATE_180 or ROTATE_90_COUNTERCLOCKWISE
         Imgproc.cvtColor(source, source, Imgproc.COLOR_RGB2GRAY);
         fastNlMeansDenoising(source, source);
         source = gammaCorrection(source);
